@@ -1,3 +1,4 @@
+<!-- test comment -->
 # my-claude-project
 
 シンプルなTODOアプリです。Node.js + Express のバックエンドと、HTML/CSS/JavaScriptのフロントエンドで構成されています。
