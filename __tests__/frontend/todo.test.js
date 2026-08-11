@@ -33,18 +33,18 @@ describe('TODOアプリ フロントエンド (public/app.js)', () => {
   });
 
   test('TODOリストが正しくレンダリングされる', async () => {
-    // Arrange
+    // Arrange　準備　テスト用のダミーデータを用意
     const todos = [
       { id: 1, title: '買い物', completed: false },
       { id: 2, title: '掃除', completed: true },
     ];
     global.fetch.mockResolvedValue({ json: () => Promise.resolve(todos) });
 
-    // Act
+    // Act　実行　app.jsを読み込んで画面に描画
     require('../../public/app.js');
     await flushPromises();
 
-    // Assert
+    // Assert　確認　期待どおりかをチェック
     const items = document.querySelectorAll('#todo-list li');
     expect(items).toHaveLength(2);
     expect(items[0].querySelector('span').textContent).toBe('買い物');

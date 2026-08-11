@@ -8,6 +8,8 @@ module.exports = {
   coverageReporters: ['text', 'lcov'],
   coverageThreshold: {
     global: {
+
+      //行カバレッジが70%を下回ったらNG
       lines: 70,
       functions: 70,
       branches: 60,

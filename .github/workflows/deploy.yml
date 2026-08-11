@@ -9,6 +9,8 @@ jobs:
     uses: ./.github/workflows/ci.yml
 
   deploy:
+    # テストが成功した場合のみ、ジョブを実行する
+    # テストが1つでもNGだったら、ストップする EC2には反映されない
     needs: test
     runs-on: ubuntu-latest
     steps:

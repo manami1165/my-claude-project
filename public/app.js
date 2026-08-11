@@ -1,4 +1,7 @@
+//fetchでサーバーにリクエストを送る。省略されている場合、GET
 // TODO一覧をサーバーから取得して画面に表示する
+
+//GETメソッド
 async function fetchTodos() {
   const res = await fetch('/todos');
   const todos = await res.json();

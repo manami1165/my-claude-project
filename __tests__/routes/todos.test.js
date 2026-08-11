@@ -1,3 +1,7 @@
+//  モックを作成する理由　
+// 　　本番データを壊すリスクがあるため
+//     本物のDBに接続すると遅いため
+
 const request = require('supertest');
 const express = require('express');
 

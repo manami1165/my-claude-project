@@ -1,5 +1,7 @@
+//接続情報を.envファイルから読み込む
 require('dotenv').config();
 const express = require('express');
+//todosファイルを読み込む
 const todosRouter = require('./routes/todos');
 
 const app = express();
@@ -14,6 +16,8 @@ app.use(express.static('public'));
 // /todos 以下のAPIルートを登録する
 app.use('/todos', todosRouter);
 
+//サーバー起動
 app.listen(PORT, () => {
   console.log(`サーバーが起動しました: http://localhost:${PORT}`);
 });
+
