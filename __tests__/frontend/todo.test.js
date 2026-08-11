@@ -17,6 +17,7 @@ describe('TODOアプリ フロントエンド (public/app.js)', () => {
     document.body.innerHTML = `
       <form id="todo-form">
         <input type="text" id="todo-title">
+        <input type="number" id="todo-priority">
         <button type="submit">追加</button>
       </form>
       <ul id="todo-list"></ul>
@@ -74,7 +75,7 @@ describe('TODOアプリ フロントエンド (public/app.js)', () => {
       '/todos',
       expect.objectContaining({
         method: 'POST',
-        body: JSON.stringify({ title: '新しいタスク' }),
+        body: JSON.stringify({ title: '新しいタスク' ,priority: 0}),
       })
     );
   });

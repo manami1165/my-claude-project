@@ -40,11 +40,11 @@ function renderTodos(todos) {
 }
 
 // 新しいTODOを追加する
-async function addTodo(title) {
+async function addTodo(title,priority) {
   await fetch('/todos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title }),
+    body: JSON.stringify({ title,priority }),
   });
   fetchTodos();
 }
@@ -69,10 +69,12 @@ async function deleteTodo(id) {
 document.getElementById('todo-form').addEventListener('submit', (event) => {
   event.preventDefault();
   const input = document.getElementById('todo-title');
+  const priorityInput = document.getElementById('todo-priority');
+  const priority = Number(priorityInput.value)
   const title = input.value.trim();
   if (!title) return;
 
-  addTodo(title);
+  addTodo(title,priority);
   input.value = '';
 });
 
