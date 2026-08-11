@@ -45,14 +45,14 @@ router.get('/:id', async (req, res) => {
 // TODOを新規追加する
 router.post('/', async (req, res) => {
   try {
-    const { title } = req.body;
+    const { title,priority  } = req.body;
     if (!title || !title.trim()) {
       return res.status(400).json({ error: 'title is required' });
     }
 
     const result = await pool.query(
-      'INSERT INTO todos (title) VALUES ($1) RETURNING *',
-      [title.trim()]
+      'INSERT INTO todos (title,priority ) VALUES ($1,$2) RETURNING *',
+      [title.trim(),priority]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
