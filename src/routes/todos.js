@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
     }
 
     const result = await pool.query(
-      'INSERT INTO todos (title,priority ) VALUES ($1,$2) RETURNING *',
+      'INSERT INTO todos (title,priority) VALUES ($1,$2) RETURNING *',
       [title.trim(),priority]
     );
     res.status(201).json(result.rows[0]);

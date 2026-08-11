@@ -115,8 +115,8 @@ describe('todos ルーター', () => {
       expect(res.status).toBe(201);
       expect(res.body).toEqual(created);
       expect(pool.query).toHaveBeenCalledWith(
-        'INSERT INTO todos (title) VALUES ($1) RETURNING *',
-        ['掃除']
+        'INSERT INTO todos (title,priority) VALUES ($1,$2) RETURNING *',
+        ['掃除',undefined]
       );
     });
 
