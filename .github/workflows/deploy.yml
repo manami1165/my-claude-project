@@ -1,3 +1,5 @@
+# プッシュしたら自動で本番に反映される
+
 name: Deploy to EC2
 
 on:

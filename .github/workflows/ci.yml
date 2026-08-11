@@ -1,3 +1,5 @@
+# 品質のチェックを自動化
+
 name: CI
 
 on:
@@ -11,9 +13,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    #　環境を整える
       - name: コードをチェックアウト
         uses: actions/checkout@v4
-
+    #　必要なライブラリを入れる
       - name: Node.js をセットアップ
         uses: actions/setup-node@v4
         with:
@@ -23,6 +26,7 @@ jobs:
       - name: 依存関係をインストール
         run: npm ci
 
+      #　書き方のミスを自動でチェックしてくれる
       - name: Lint
         run: npm run lint --if-present
 
