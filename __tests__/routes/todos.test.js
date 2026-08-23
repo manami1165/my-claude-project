@@ -1,6 +1,6 @@
-//  モックを作成する理由　
-// 　　本番データを壊すリスクがあるため
-//     本物のDBに接続すると遅いため
+//　モックを作成する理由　
+//　本番データを壊すリスクがあるため
+//　本物のDBに接続すると遅いため
 
 const request = require('supertest');
 const express = require('express');
@@ -178,6 +178,16 @@ describe('todos ルーター', () => {
       expect(res.status).toBe(404);
       expect(res.body).toEqual({ error: 'todo not found' });
     });
+
+    test('異常系: titleが空白のみの場合は400を返す', async () => {
+      // Act
+      const res = await request(app).patch('/todos/1').send({ title: '   ' });
+
+      // Assert
+      expect(res.status).toBe(400);
+      expect(pool.query).not.toHaveBeenCalled();
+    });
+
   });
 
   describe('DELETE /todos/:id', () => {

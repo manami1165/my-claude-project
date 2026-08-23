@@ -1,5 +1,6 @@
 node_modules/
 coverage/
+# パスワードやAPIキーを記載しているため、.envファイルはGitに上げないこと
 .env
 server.log
 *.pem

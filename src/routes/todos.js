@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
     const { completed } = req.query;
     let result;
 
+//文字列で比較してから、boolean型に変換する
     if (completed === 'true' || completed === 'false') {
       result = await pool.query(
         'SELECT * FROM todos WHERE completed = $1 ORDER BY id',
@@ -27,6 +28,7 @@ router.get('/', async (req, res) => {
 });
 
 // IDを指定してTODOを1件取得する
+// DB接続が切れた時とかSQLミスした時にサーバーがクラッシュしたりリクエストが固まって永遠に応答が返らない状態になるため、try/catchでエラーを返す。
 router.get('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -72,6 +74,7 @@ router.patch('/:id', async (req, res) => {
       return res.status(400).json({ error: 'title must not be empty' });
     }
 
+    // COALESCEは、NULLの場合元の値のままにする
     const result = await pool.query(
       `UPDATE todos
        SET title = COALESCE($1, title),

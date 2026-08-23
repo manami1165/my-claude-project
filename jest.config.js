@@ -10,6 +10,7 @@ module.exports = {
     global: {
 
       //行カバレッジが70%を下回ったらNG
+      //行と分岐はべつもの
       lines: 70,
       functions: 70,
       branches: 60,
